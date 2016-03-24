@@ -50,7 +50,7 @@ var mRequest = new XMLHttpRequest();
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
-
+mImages.push(GalleryImage);
 // Holds the retrived JSON information
 var mJson = mUrl;
 
@@ -81,7 +81,7 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage() {
+function GalleryImage(loc, description, d, imgString) {
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	//2. description of photo
@@ -91,5 +91,6 @@ function GalleryImage() {
 	this.desciption= new description;
 	this.d= new date;
 	this.imgString= new imgString; 
+	
 	
 }
