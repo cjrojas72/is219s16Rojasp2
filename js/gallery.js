@@ -70,7 +70,7 @@ mRequest.onreadystatechange = function()
 		}
 	}
 };
-mRequest.open("GET",mURL, true);
+mRequest.open("GET","images.json", true);
 mRequest.send();
 
 // Array holding GalleryImage objects (see below).
