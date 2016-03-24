@@ -56,7 +56,7 @@ mRequest.onreadystatechange = function()
 		// Let’s try and see if we can parse JSON
 		mJson = JSON.parse(mRequest.responseText);
 		// Let’s print out the JSON; It will likely show as “obj”
-			for(var i=0; i< GalleryImage.length; i++)
+			for(var i=0; i< mJson.length; i++)
 			{
 				mImages.push(GalleryImage);	
 			}
