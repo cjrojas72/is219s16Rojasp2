@@ -47,12 +47,35 @@ var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
+mRequest.onreadystatechange = function() 
+{
+// Do something interesting if file is opened successfully
+	if (mRequest.readyState == 4 && mRequest.status == 200) 
+	{
+		try 
+		{
+		// Let’s try and see if we can parse JSON
+		mJson = JSON.parse(mRequest.responseText);
+		// Let’s print out the JSON; It will likely show as “obj”
+			for(var i=0; i< GalleryImage.length; i++)
+			{
+				mImages.push(GalleryImage);	
+			}
+			console.log(mJson);
+		} 
+		catch(err) 
+		{
+		console.log(err.message);
+		}
+	}
+};
+mRequest.open("GET",mURL, true);
+mRequest.send();
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
-mImages.push(GalleryImage);
 // Holds the retrived JSON information
-var mJson = mUrl;
+var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
@@ -87,9 +110,9 @@ function GalleryImage(loc, description, d, imgString) {
 	//2. description of photo
 	//3. the date when the photo was taken
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
-	this.loc= new location;
+	this.loc= new loc;
 	this.desciption= new description;
-	this.d= new date;
+	this.d= new d;
 	this.imgString= new imgString; 
 	
 	
