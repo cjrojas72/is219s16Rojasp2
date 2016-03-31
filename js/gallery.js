@@ -110,10 +110,10 @@ function GalleryImage(loc, description, d, imgString) {
 	//2. description of photo
 	//3. the date when the photo was taken
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
-	this.loc= new loc;
-	this.desciption= new description;
-	this.d= new d;
-	this.imgString= new imgString; 
+	this.loc= loc;
+	this.desciption= description;
+	this.d= d;
+	this.imgString= imgString; 
 	
 	
 }
