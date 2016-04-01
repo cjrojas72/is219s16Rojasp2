@@ -69,7 +69,7 @@ mRequest.onreadystatechange = function()
 			{
 				mImages.push(new GalleryImage(mJson.images[i].imgString, mJson.images[i].loc, mJson.images[i].descript, mJson.images[i].d));	
 			}
-			console.log(mJson);
+			console.log(mImages);
 		} 
 		catch(err) 
 		{
