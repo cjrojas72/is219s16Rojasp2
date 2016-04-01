@@ -65,7 +65,7 @@ mRequest.onreadystatechange = function()
 		// Let’s print out the JSON; It will likely show as “obj”
 			for(var i=0; i< mJson.images.length; i++)
 			{
-				mImages.push(new GalleryImage(mJson.images[i].imgString, mJson.images[i].loc, mJson.images[i].description, mJson.images[i].d));	
+				mImages.push(new GalleryImage(mJson.images[i].imgString, mJson.images[i].loc, mJson.images[i].descript, mJson.images[i].d));	
 			}
 			console.log(mJson);
 		} 
@@ -110,7 +110,7 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage(imgString, loc, description, d) {
+function GalleryImage(imgString, loc, descript, d) {
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	//2. description of photo
@@ -118,7 +118,7 @@ function GalleryImage(imgString, loc, description, d) {
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
 	this.imgString= imgString;
 	this.loc= loc;
-	this.desciption= description;
+	this.descipt= descript;
 	this.d= d;
 	
 	
