@@ -65,7 +65,7 @@ mRequest.onreadystatechange = function()
 		// Let’s print out the JSON; It will likely show as “obj”
 			for(var i=0; i< mJson.images.length; i++)
 			{
-				mImages.push(new GalleryImage(mJson.images[i[.imgString, mJson.images[i].loc, mJson.images[i].description, mJson.images[i].d));	
+				mImages.push(new GalleryImage(mJson.images[i].imgString, mJson.images[i].loc, mJson.images[i].description, mJson.images[i].d));	
 			}
 			console.log(mJson);
 		} 
