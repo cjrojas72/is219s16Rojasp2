@@ -40,6 +40,8 @@ function swapPhoto() {
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 	mCurrentIndex++;
 	
+	console.log(mImages[mCurrentIndex].imgString);
+	
 	if(mCurrentIndex === mImages.length)
 	{
 		mCurrentIndex = 0;	
