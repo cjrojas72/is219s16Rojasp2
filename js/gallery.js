@@ -46,9 +46,14 @@ function swapPhoto() {
 		mCurrentIndex++;	
 	}
 	
-	else
+	else if(mCurrentIndex === mImages.length)
 	{
 		mCurrentIndex=0; 
+	}
+	
+	else
+	{
+		console.log("error");
 	}
 	console.log('swap photo');
 }
