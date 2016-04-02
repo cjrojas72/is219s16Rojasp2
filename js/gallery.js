@@ -41,13 +41,13 @@ function swapPhoto() {
 	
 	console.log(mImages[mCurrentIndex].imgString);
 	
-	if(mCurrentIndex < mImages.length + 1)
-	{
-		mCurrentIndex++;
-	}
-	else if(mCurrentIndex === mImages.length)
+	if(mCurrentIndex >= mImages.length)
 	{
 		mCurrentIndex=0;
+	}
+	else
+	{
+		mCurrentIndex++;
 	}
 	console.log('swap photo');
 }
