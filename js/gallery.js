@@ -37,23 +37,24 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	var mCurrentIndex = 0;
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 	
 	console.log(mImages[mCurrentIndex].imgString);
 	
-	mCurrentIndex ++; 
-	
-	if(mCurrentIndex <= mImages.length)
+	if(mCurrentIndex < mImages.length)
 	{
-		swapPhoto();
+		mCurrentIndex++;
+	}
+	else
+	{
+		mCurrentIndex=0;
 	}
 	console.log('swap photo');
 }
 
 var mURL= 'images.json';
 // Counter for the mImages array
-
+var mCurrentIndex=0;
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 mRequest.onreadystatechange = function() 
