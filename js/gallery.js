@@ -45,11 +45,22 @@ function swapPhoto() {
 	{
 		mCurrentIndex++;
 	}
-	else
+	else if(mCurrentIndex === mImages.length)
 	{
 		mCurrentIndex=0;
 	}
 	console.log('swap photo');
+}
+
+function revSwapPhoto()
+{
+	mCurrentIndex--; 
+	
+	if(mCurrentIndex === 0)
+	{
+		mCurrentIndex = mImages.length - 1;
+	}
+	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 }
 
 var mURL= 'images.json';
