@@ -4,6 +4,12 @@ body {
 	background-image: url(../img/geometry.jpg);
 }
 
+#photo img
+{
+	width: 650px;
+	height: 650px;
+}
+
 #photoBooth {
 	margin-top: .2em;
 	padding: 10px;
