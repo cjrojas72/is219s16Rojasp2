@@ -32,6 +32,15 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
+function swapDetails()
+{
+	$('.location').text(" " + mImages[mCurrentIndex].loc);
+	$('.description').text(" " + mImages[mCurrrentIndex].descript);
+	$('.date').text(" " + mImages[mCurrentIndex].date);
+	
+	console.log('swapDetails');
+}
+
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
