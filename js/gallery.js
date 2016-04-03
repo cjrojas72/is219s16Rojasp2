@@ -149,6 +149,6 @@ $(document).ready(function()
 		swapPhoto();
 	});
 	$('#prevPhoto').click(function(){
-		rewSwapPhoto();
+		revSwapPhoto();
 	});
 });
