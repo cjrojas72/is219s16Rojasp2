@@ -64,13 +64,11 @@ function revSwapPhoto()
 }
 
 
-$('#nextPhoto').click(function
-{
+$('#nextPhoto').click(function(){
 	swapPhoto();	
 });
 
-$('#prevPhoto').click(function
-{
+$('#prevPhoto').click(function(){
 	revSwapPhoto();
 });
 
