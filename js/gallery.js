@@ -183,7 +183,7 @@ $(document).ready(function()
 		$(this).toggleClass('rot270');
 		
 		$('.details').toggle(function(){
-			$('.details').show();	
+			('.details').unbind('hide.details');	
 		});
 	});
 });
