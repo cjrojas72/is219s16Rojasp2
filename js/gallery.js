@@ -169,6 +169,6 @@ $(document).ready(function()
 	$('.moreIndicator').click(function(){
 		$(this).toggleClass('rot270');
 		
-		$('.details, .description, .location, .date').toggle();
+		$('.details').show();
 	});
 });
