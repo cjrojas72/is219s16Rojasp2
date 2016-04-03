@@ -49,6 +49,8 @@ function swapPhoto() {
 	//from the JSON string
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 	
+	swapDetails();
+	
 	console.log(mImages[mCurrentIndex].imgString);
 	
 	if(mCurrentIndex >= mImages.length - 1)
@@ -71,6 +73,8 @@ function revSwapPhoto()
 		mCurrentIndex = mImages.length - 1;
 	}
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
+	
+	swapDetails();
 	
 }
 
