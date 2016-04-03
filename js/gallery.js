@@ -146,7 +146,7 @@ function GalleryImage(imgString, loc, descript, d) {
 $(document).ready(function()
 {
 	$('#nextPhoto').click(function(){
-		swapPhoto());
+		swapPhoto();
 	});
 	$('#prevPhoto').click(function(){
 		rewSwapPhoto();
