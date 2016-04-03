@@ -140,14 +140,15 @@ function GalleryImage(imgString, loc, descript, d) {
 	this.loc= loc;
 	this.descipt= descript;
 	this.d= d;
-	
-	
-	
+
 }
 
-function arrowImgSwap()
+$(document).ready(function()
 {
-	$('#nextPhoto').click(swapPhoto);
-	
-	$('#prevPhoto').click(rewSwapPhoto);
-}
+	$('#nextPhoto').click(function(){
+		swapPhoto());
+	});
+	$('#prevPhoto').click(function(){
+		rewSwapPhoto();
+	});
+});
