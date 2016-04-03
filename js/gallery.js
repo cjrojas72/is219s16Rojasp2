@@ -184,11 +184,11 @@ $(document).ready(function()
 		
 		if($('.moreIndicator').hasClass('rot270'))
 		{
-			$('.details').show();
+			$('.details').slideDown();
 		}
 		else
 		{
-			$('.details').eq(0).hide();
+			$('.details').slideUp();
 		}
 	});
 });
