@@ -182,11 +182,13 @@ $(document).ready(function()
 	$('.moreIndicator').click(function(){
 		$(this).toggleClass('rot270');
 		
-		$('.details').toggle(function(){
-			(this).show();	
-		},
-		function(){
-			('.details').eq(0).hide();
-		});
+		if($('.moreIndicator').hasClass('rot270'))
+		{
+			$('.details').show();
+		}
+		else
+		{
+			$('.details').eq(0).hide();
+		}
 	});
 });
