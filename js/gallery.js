@@ -35,8 +35,8 @@ function animate() {
 function swapDetails()
 {
 	$('.location').text(" " + mImages[mCurrentIndex].loc);
-	$('.description').text(" " + mImages[mCurrrentIndex].descript);
-	$('.date').text(" " + mImages[mCurrentIndex].date);
+	$('.description').text(" " + mImages[mCurrentIndex].descript);
+	$('.date').text(" " + mImages[mCurrentIndex].d);
 	
 	console.log('swapDetails');
 }
