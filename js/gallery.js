@@ -68,7 +68,7 @@ function revSwapPhoto()
 	
 	$('#prevPhoto').click(function(){
 		(this).revSwapPhoto();
-	}))
+	});
 	
 }
 
