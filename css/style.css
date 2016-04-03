@@ -39,11 +39,11 @@ body {
 	display: block;
 	height: 50px;
 	width: 50px;
-	position: absolute;
-	left: 50%;
+	position: relative;
 	z-index: 3;
 	opacity: .8;
-	bottom: 100px;
+	top: -75px;
+	left: 47%;
 }
 
 .thumbnail {
