@@ -63,6 +63,19 @@ function revSwapPhoto()
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 }
 
+
+$('#nextPhoto').click(function
+{
+	swapPhoto();	
+});
+
+$('#prevPhoto').click(function
+{
+	revSwapPhoto();
+});
+
+
+
 var mURL= 'images.json';
 // Counter for the mImages array
 var mCurrentIndex=0;
