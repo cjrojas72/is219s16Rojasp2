@@ -147,9 +147,11 @@ $(document).ready(function()
 {
 	$('#nextPhoto').hover(function(){
 		$(this).css("opacity", "0.8");
+		$(this).css("opacity", "1")
 	});
 	$('#prevPhoto').hover(function(){
-		$(this).css("opacity", "0.8");	
+		$(this).css("opacity", "0.8");
+		$(this).css("opacity", "1");
 	});
 	
 	$('#nextPhoto').click(function(){
