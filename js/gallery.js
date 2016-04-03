@@ -32,16 +32,13 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
+
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
-	
-	$('#nextPhoto').click(function(){
-		(this).swapPhoto();	
-	});
 	
 	console.log(mImages[mCurrentIndex].imgString);
 	
@@ -65,10 +62,6 @@ function revSwapPhoto()
 		mCurrentIndex = mImages.length - 1;
 	}
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
-	
-	$('#prevPhoto').click(function(){
-		(this).revSwapPhoto();
-	});
 	
 }
 
@@ -150,4 +143,11 @@ function GalleryImage(imgString, loc, descript, d) {
 	
 	
 	
+}
+
+function arrowImgSwap()
+{
+	$('#nextPhoto').click(swapPhoto);
+	
+	$('#prevPhoto').click(rewSwapPhoto);
 }
