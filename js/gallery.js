@@ -151,7 +151,7 @@ function GalleryImage(imgString, loc, descript, d) {
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
 	this.imgString= imgString;
 	this.loc= loc;
-	this.descipt= descript;
+	this.descript= descript;
 	this.d= d;
 
 }
