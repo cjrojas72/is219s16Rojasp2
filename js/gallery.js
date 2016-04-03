@@ -143,6 +143,7 @@ function GalleryImage(imgString, loc, descript, d) {
 
 }
 
+
 $(document).ready(function()
 {
 	$('#nextPhoto').hover(function(){
@@ -163,5 +164,10 @@ $(document).ready(function()
 	});
 	$('#prevPhoto').click(function(){
 		revSwapPhoto();
+	});
+	
+	$('#moreIndicator').click(function(){
+		$('#moreIndicator img').addClass('rot180').toggle;
+		
 	});
 });
