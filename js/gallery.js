@@ -166,7 +166,7 @@ $(document).ready(function()
 		revSwapPhoto();
 	});
 	
-	$('#moreIndicator').click(function(){
+	$('.moreIndicator').click(function(){
 		$(this).toggleClass('rot180');
 		
 	});
