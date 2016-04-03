@@ -65,11 +65,11 @@ function revSwapPhoto()
 
 
 $('#nextPhoto').click(function(){
-	swapPhoto();	
+	(this).swapPhoto();	
 });
 
 $('#prevPhoto').click(function(){
-	revSwapPhoto();
+	(this).revSwapPhoto();
 });
 
 
