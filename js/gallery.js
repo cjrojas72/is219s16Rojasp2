@@ -145,6 +145,13 @@ function GalleryImage(imgString, loc, descript, d) {
 
 $(document).ready(function()
 {
+	$('#nextPhoto').hover(function(){
+		$(this).css("opacity", "0.8");
+	});
+	$('#prevPhoto').hover(function(){
+		$(this.css("opacity", "0.8");	
+	});
+	
 	$('#nextPhoto').click(function(){
 		swapPhoto();
 	});
