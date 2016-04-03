@@ -66,7 +66,7 @@ function revSwapPhoto()
 	}
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 	
-	$('#prevPhoto').click(function({
+	$('#prevPhoto').click(function(){
 		(this).revSwapPhoto();
 	}))
 	
