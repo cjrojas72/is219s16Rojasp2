@@ -37,11 +37,10 @@ body {
 .moreIndicator {
 
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
 	height: 50px;
 	width: 50px;
-	position: relative;
+	position: absolute;
+	left: 50%;
 	z-index: 3;
 	opacity: .8;
 	bottom: 100px;
