@@ -167,7 +167,7 @@ $(document).ready(function()
 	});
 	
 	$('#moreIndicator').click(function(){
-		$('#moreIndicator img').toggleClass('rot180');
+		$('#moreIndicator').toggleClass('rot180');
 		
 	});
 });
