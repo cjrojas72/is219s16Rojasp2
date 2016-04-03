@@ -108,7 +108,7 @@ mRequest.onreadystatechange = function()
 		}
 	}
 };
-mRequest.open("GET", mUrl, true);
+mRequest.open("GET", mURL, true);
 mRequest.send();
 
 // Array holding GalleryImage objects (see below).
