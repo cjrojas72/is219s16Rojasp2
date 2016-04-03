@@ -39,6 +39,10 @@ function swapPhoto() {
 	//from the JSON string
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
 	
+	$('#nextPhoto').click(function(){
+		(this).swapPhoto();	
+	});
+	
 	console.log(mImages[mCurrentIndex].imgString);
 	
 	if(mCurrentIndex >= mImages.length - 1)
@@ -61,16 +65,13 @@ function revSwapPhoto()
 		mCurrentIndex = mImages.length - 1;
 	}
 	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
+	
+	$('#prevPhoto').click(function({
+		(this).revSwapPhoto();
+	}))
+	
 }
 
-
-$('#nextPhoto').click(function(){
-	(this).swapPhoto();	
-});
-
-$('#prevPhoto').click(function(){
-	(this).revSwapPhoto();
-});
 
 
 
