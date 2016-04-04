@@ -82,6 +82,7 @@ function revSwapPhoto()
 
 
 var mURL= 'images.json';
+var jsn= '.json';
 // Counter for the mImages array
 var mCurrentIndex=0;
 // XMLHttpRequest variable
@@ -110,6 +111,8 @@ mRequest.onreadystatechange = function()
 };
 mRequest.open("GET", mURL, true);
 mRequest.send();
+
+mRequest.open("GEt", jsn, true);
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
