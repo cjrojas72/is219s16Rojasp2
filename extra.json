@@ -5,25 +5,25 @@
 					"imgLocation": "Spain",
 					"description": "Cartagena",
 					"date": "1/5/2016"
-			}
+			},
 			{
 					"imgPath": "img/places/jc-newJersey.jpg",
 					"imgLocation": "New Jersey",
 					"description": "Jersey City",
 					"date": "2/5/2016"
-			}
+			},
 			{
 					"imgPath": "img/places/Moscow-Russia.jpg",
 					"imgLocation": "Russia",
 					"description": "Moscow",
 					"date": "3/13/2016"
-			}
+			},
 			{
 					"imgPath": "img/places/Cancun.jpg",
 					"imgLocation": "Mexico",
 					"description": "Cancun",
 					"date": "4/2/2016"
-			}
+			},
 			{
 					"imgPath": "img/places/nyc2.jpg",
 					"imgLocation": "New York",
