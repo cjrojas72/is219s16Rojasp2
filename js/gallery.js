@@ -126,11 +126,6 @@ function getQueryParams(qs) {
 }
 var $_GET = getQueryParams(document.location.search);
 
-mRequest.addEventListener("load", $_Get);
-mRequest.open("GET", "extra.json");
-mRequest.send();
-
-console.log("$_Get");
 
 
 // Array holding GalleryImage objects (see below).
