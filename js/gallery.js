@@ -82,7 +82,7 @@ function revSwapPhoto()
 
 
 var mURL= 'images.json';
-var jsn= '.json';
+var jsn= 'extra.json';
 // Counter for the mImages array
 var mCurrentIndex=0;
 // XMLHttpRequest variable
@@ -112,7 +112,20 @@ mRequest.onreadystatechange = function()
 mRequest.open("GET", mURL, true);
 mRequest.send();
 
-mRequest.open("GEt", jsn, true);
+function getQueryParams(qs) {
+ 		qs = qs.split("+").join(" ");
+ 		var params = {},
+ 				tokens,
+ 				re = /[?&]?([^=]+)=([^&]*)/g;
+ 		
+ 		while (tokens = re.exec(qs)) 
+ 		{
+ 		params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+ 		}
+ 		return params;
+}
+var $_GET = getQueryParams(document.location.search);
+
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
