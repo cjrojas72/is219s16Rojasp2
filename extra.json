@@ -9,13 +9,13 @@
 			{
 					"imgPath": "img/places/jc-newJersey.jpg",
 					"imgLocation": "New Jersey",
-					"description": "Jersey City"
+					"description": "Jersey City",
 					"date": "2/5/2016"
 			}
 			{
 					"imgPath": "img/places/Moscow-Russia.jpg",
-					"imgLocation": "Russia"
-					"description": "Moscow"
+					"imgLocation": "Russia",
+					"description": "Moscow",
 					"date": "3/13/2016"
 			}
 			{
