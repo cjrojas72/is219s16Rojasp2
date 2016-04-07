@@ -81,15 +81,7 @@ function revSwapPhoto()
 
 
 
-var mURL= if($_GET["json"] != undefined)
-	{
-		mURL= 'images.json';
-	}
-	
-	else
-	{
-		mURL= $_GET["json"];
-	}
+var mURL= $_GET["json"] != undefined ? $_GET["json"]: 'images.json';
 
 // Counter for the mImages array
 var mCurrentIndex=0;
