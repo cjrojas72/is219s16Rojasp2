@@ -90,26 +90,37 @@ var mRequest = new XMLHttpRequest();
 mRequest.onreadystatechange = function() 
 {
 // Do something interesting if file is opened successfully
-	if (mRequest.readyState == 4 && mRequest.status == 200) 
-	{
-		try 
-		{
-		// Let’s try and see if we can parse JSON
-		mJson = JSON.parse(mRequest.responseText);
-		// Let’s print out the JSON; It will likely show as “obj”
-			for(var i=0; i< mJson.images.length; i++)
-			{
-				mImages.push(new GalleryImage(mJson.images[i].imgPath, mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date));	
-			}
-			console.log(mImages);
-		} 
-		catch(err) 
-		{
-		console.log(err.message);
-		}
-	}
-};
-mRequest.open("GET", mURL, true);
+if (mRequest.readyState == 4 && mRequest.status == 200) {
+            
+            // We can't be certain that the file is valid JSON, so let's try parsing it.
+            try {
+	            
+	            // Parse and make the JSON file contents and put it into the JS mJson object.
+                mJson = JSON.parse(mRequest.responseText);
+
+				// Let's go through mJson, and split it up into smaller chunks.
+                for (var i = 0; i < mJson.images.length; i++) {
+	                
+	                // This is the current instance we are working on
+		        	var myLine = mJson.images[i];
+		        	
+		        	// Let's make a new GalleryImage (with 4 arguments) and add it to the mImages array
+		        	mImages.push(new GalleryImage(myLine.imgLocation, myLine.description, myLine.date, myLine.imgPath));
+		        	
+		    	}
+		    	// Print the contents of the mImages array to the console.
+		    	console.log(mImages)
+
+            } catch(err) {
+                // There was an error parsing the JSON file (maybe it wasn't valid?). So fail.
+                console.log(err.message + " in " + mRequest.responseText);
+                return;
+            }
+        }
+    };
+
+// These two lines initiate the code block above.
+mRequest.open("GET", mUrl, true);
 mRequest.send();
 
 function getQueryParams(qs) {
