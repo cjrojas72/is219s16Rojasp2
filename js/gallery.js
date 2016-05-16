@@ -105,7 +105,7 @@ if (mRequest.readyState == 4 && mRequest.status == 200) {
 		        	var myLine = mJson.images[i];
 		        	
 		        	// Let's make a new GalleryImage (with 4 arguments) and add it to the mImages array
-		        	mImages.push(new GalleryImage(myLine.imgLocation, myLine.description, myLine.date, myLine.imgPath));
+		        	mImages.push(new GalleryImage(myLine.imgString, myLine.loc, myLine.descript, myLine.d));
 		        	
 		    	}
 		    	// Print the contents of the mImages array to the console.
