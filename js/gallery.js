@@ -120,7 +120,7 @@ if (mRequest.readyState == 4 && mRequest.status == 200) {
     };
 
 // These two lines initiate the code block above.
-mRequest.open("GET", mUrl, true);
+mRequest.open("GET", mURL, true);
 mRequest.send();
 
 function getQueryParams(qs) {
