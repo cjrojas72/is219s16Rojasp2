@@ -11,8 +11,6 @@
     })();
   
 
-// example code from mr doob : http://mrdoob.com/lab/javascript/requestanimationframe/
-
 animate();
 
 var mLastFrameTime = 0;
@@ -32,65 +30,96 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
-function swapDetails()
-{
-	$('.location').text("Location: " + mImages[mCurrentIndex].loc);
-	$('.description').text("Description: " + mImages[mCurrentIndex].descript);
-	$('.date').text("Date: " + mImages[mCurrentIndex].d);
-	
-	console.log('swapDetails');
+// This function splits up the GET query paramaters and initializes them in pairs.
+function getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])]
+            = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
 }
 
-
-function swapPhoto() {
-	//Add code here to access the #slideShow element.
-	//Access the img element and replace its source
-	//with a new image from your images array which is loaded 
-	//from the JSON string
-	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
-	
-	swapDetails();
-	
-	console.log(mImages[mCurrentIndex].imgString);
-	
-	if(mCurrentIndex >= mImages.length - 1)
-	{
-		mCurrentIndex=0;
-	}
-	else
-	{
-		mCurrentIndex++;
-	}
-	console.log('swap photo');
-}
-
-function revSwapPhoto()
-{
-	mCurrentIndex--; 
-	
-	if(mCurrentIndex <= 0)
-	{
-		mCurrentIndex = mImages.length - 1;
-	}
-	$('#photo').attr('src', mImages[mCurrentIndex].imgString);
-	
-	swapDetails();
-	
-}
+var $_GET = getQueryParams(document.location.search);
 
 
 
+// *** Initialize all global variables ***
 
-var mURL= $_GET["json"] != undefined ? $_GET["json"]: 'images.json';
+// Overall index counter
+var mCurrentIndex = 0;
 
-// Counter for the mImages array
-var mCurrentIndex=0;
-// XMLHttpRequest variable
+// Sets up a XMLHttpRequest to import a file into our script
 var mRequest = new XMLHttpRequest();
-mRequest.onreadystatechange = function() 
-{
-// Do something interesting if file is opened successfully
-if (mRequest.readyState == 4 && mRequest.status == 200) {
+
+//Use this array to hold objects which contain the following:
+//location, description, date and an actual Image element.
+var mImages = [];
+
+// Used as a temporay holder for our JSON file data
+var mJson;
+
+// Let's our script decide which JSON file to load
+var mUrl = $_GET["json"] != undefined ? $_GET["json"] : 'images.json';
+
+// The code block below is exactly the same as the code above.
+/*
+	var mURL;
+	if ($_GET["json"] != undefined)	
+		mUrl = $_GET["json"];
+	else
+		mUrl = 'images.json';
+	
+*/
+
+
+// Our main swapPhoto function
+function swapPhoto() {
+	
+	// Swap the photo and metadata
+	swapPhotoHelper();
+	
+	// Logic for looping back to the 0th index if we're at the end of the array
+	if (mCurrentIndex+1 < mImages.length){
+		// If there are more array indicies, keep incrementing the counter
+		mCurrentIndex++;
+		console.log("Increment Counter");
+	}
+	else {
+		// If we're at the end of the array, reset the counter to start back at 0
+		mCurrentIndex = 0;
+		console.log("Reset Counter");
+	}
+	
+}
+
+// This is the actual function that swaps the photo and metadata
+function swapPhotoHelper() {
+	
+	// Show the current image info in the console.
+	console.log('Showing image ' + (mCurrentIndex+1) + ' of ' + mImages.length + ".");
+	
+	// Replace the #photo container's img src so that the user sees a new image.
+	$("#photo").attr("src", mImages[mCurrentIndex].img);
+	
+	// Replace each of the metadata info so the user sees the new text
+	$(".location").text("Location: " + mImages[mCurrentIndex].location);
+	$(".description").text("Description: " + mImages[mCurrentIndex].description);
+	$(".date").text("Date: " + mImages[mCurrentIndex].date);
+	
+}
+
+
+// This is the code to open up the JSON file, make it into a JS object, and split it up into mImages.
+mRequest.onreadystatechange = function() {
+	
+		// Make sure we got the file without any errors
+        if (mRequest.readyState == 4 && mRequest.status == 200) {
             
             // We can't be certain that the file is valid JSON, so let's try parsing it.
             try {
@@ -105,7 +134,7 @@ if (mRequest.readyState == 4 && mRequest.status == 200) {
 		        	var myLine = mJson.images[i];
 		        	
 		        	// Let's make a new GalleryImage (with 4 arguments) and add it to the mImages array
-		        	mImages.push(new GalleryImage(myLine.imgString, myLine.loc, myLine.descript, myLine.d));
+		        	mImages.push(new GalleryImage(myLine.imgLocation, myLine.description, myLine.date, myLine.imgPath));
 		        	
 		    	}
 		    	// Print the contents of the mImages array to the console.
@@ -120,103 +149,76 @@ if (mRequest.readyState == 4 && mRequest.status == 200) {
     };
 
 // These two lines initiate the code block above.
-mRequest.open("GET", mURL, true);
+mRequest.open("GET", mUrl, true);
 mRequest.send();
 
-function getQueryParams(qs) {
- 		qs = qs.split("+").join(" ");
- 		var params = {},
- 				tokens,
- 				re = /[?&]?([^=]+)=([^&]*)/g;
- 		
- 		while (tokens = re.exec(qs)) 
- 		{
- 		params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
- 		}
- 		return params;
-}
-var $_GET = getQueryParams(document.location.search);
 
-
-
-// Array holding GalleryImage objects (see below).
-var mImages = [];
-// Holds the retrived JSON information
-var mJson;
-
-// URL for the JSON to load by default
-// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-
-
-
-//You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
-//@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
-function makeGalleryImageOnloadCallback(galleryImage) {
-	return function(e) {
-		galleryImage.img = e.target;
-		mImages.push(galleryImage);
-	}
-}
+// Wait until the page is done loading, then run (and wait for) the following.
 
 $(document).ready( function() {
-	
-	// This initially hides the photos' metadata information
+
+	// Initially hide all the extra metadata detail content.
 	$('.details').eq(0).hide();
 	
-});
-
-window.addEventListener('load', function() {
-	
-	console.log('window loaded');
-
-}, false);
-
-function GalleryImage(imgString, loc, descript, d) {
-	//implement me as an object to hold the following data about an image:
-	//1. location where photo was taken
-	//2. description of photo
-	//3. the date when the photo was taken
-	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
-	this.imgString= imgString;
-	this.loc= loc;
-	this.descript= descript;
-	this.d= d;
-
-}
-
-
-$(document).ready(function()
-{
-	$('#nextPhoto').hover(function(){
-		$(this).css("opacity", "0.8");
-	});
-	$('#nextPhoto').mouseout(function(){
-		$(this).css("opacity", "1");
-	});
-	$('#prevPhoto').hover(function(){
-		$(this).css("opacity", "0.8");
-	});
-	$('#prevPhoto').mouseout(function(){
-		$(this).css("opacity", "1");
-	});
-	
-	$('#nextPhoto').click(function(){
-		swapPhoto();
-	});
-	$('#prevPhoto').click(function(){
-		revSwapPhoto();
-	});
-	
-	$('.moreIndicator').click(function(){
-		$(this).toggleClass('rot270');
+	// Add a click handler to the moreIndicator button
+	$('img.moreIndicator').click(function() {
 		
-		if($('.moreIndicator').hasClass('rot270'))
-		{
-			$('.details').slideDown();
+		if ( $(this).hasClass("rot270") ) {
+			$(this).removeClass("rot270").addClass("rot90");
+			$('.details').eq(0).fadeToggle("slow", "linear");
 		}
-		else
-		{
-			$('.details').slideUp();
+		else {
+			$(this).removeClass("rot90").addClass("rot270");
+			$('.details').eq(0).fadeToggle("slow", "linear");
 		}
+		
 	});
+	
+	// Add a click handler to the nextPhoto button
+	$('#nextPhoto').click(function() {
+		
+		// Reset the script's timer so it doesn't swap the photo too soon.
+		mLastFrameTime = 0;
+		
+		// Swap the photo using our function.
+		swapPhoto();
+			
+	});
+	
+	// Add a click handler to the prevPhoto button
+	$('#prevPhoto').click(function() {
+		
+		// Reset the script's timer so it doesn't swap the photo too soon.
+		mLastFrameTime = 0;
+		
+		// Logic for looping back to the last index if we're at the 0th (first) index of the array
+		if (mCurrentIndex == 0){
+			// If we are at the beginning, set the counter for the last index of the array
+			mCurrentIndex = mImages.length-1;
+			
+			console.log("Reset Counter");
+		}
+		else {
+			// If we're not at the beginning, decrement the counter.
+			mCurrentIndex -= 1;
+			
+			console.log("Decrement Counter");
+		}
+		
+		// Swap the photo
+		swapPhotoHelper();
+			
+	});
+	
 });
+
+
+// This is our GalleryImage object constructor. It receives 4 parameters and assigns them to 4 local strings.
+function GalleryImage(location, description, date, img) {
+
+    this.location = location;
+    this.description = description;
+    this.date = date;
+    this.img = img;
+	
+}
